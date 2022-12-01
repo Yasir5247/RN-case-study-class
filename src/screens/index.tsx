@@ -1,9 +1,7 @@
 import {Navio} from 'rn-navio';
 
-import {Main} from './main';
-import {Playground} from './playground';
-import {Settings} from './settings';
-import {Example} from './_screen-sample';
+import {CaseStudyOneScreen} from './caseStudy1';
+import {DataFetchingScreen} from './dataFetching';
 
 import {useAppearance} from '../utils/hooks';
 import {screenDefaultOptions, tabDefaultOptions, getTabBarIcon} from '../utils/designSystem';
@@ -11,45 +9,28 @@ import {screenDefaultOptions, tabDefaultOptions, getTabBarIcon} from '../utils/d
 // NAVIO
 export const navio = Navio.build({
   screens: {
-    Main,
-    Settings,
-    Example,
-    Playground: {
-      component: Playground,
-      options: () => ({
-        title: 'Playground',
-      }),
-    },
+    CaseStudyOneScreen,
+    DataFetchingScreen,
   },
   stacks: {
-    MainStack: ['Main', 'Example'],
-    ExampleStack: ['Example'],
+    MainStack: ['CaseStudyOneScreen'],
+    DataFetchingStack: ['DataFetchingScreen'],
   },
   tabs: {
     MainTab: {
       stack: 'MainStack',
       options: {
-        title: 'Home',
+        title: 'CaseStudyOne',
         tabBarIcon: getTabBarIcon('MainTab'),
       },
     },
     PlaygroundTab: {
-      stack: ['Playground'],
+      stack: 'DataFetchingStack',
       options: () => ({
-        title: 'Playground',
+        title: 'DataFetching',
         tabBarIcon: getTabBarIcon('PlaygroundTab'),
       }),
     },
-    SettingsTab: {
-      stack: ['Settings'],
-      options: () => ({
-        title: 'Settings',
-        tabBarIcon: getTabBarIcon('SettingsTab'),
-      }),
-    },
-  },
-  modals: {
-    ExampleModal: 'ExampleStack',
   },
   root: 'Tabs',
   hooks: [useAppearance],

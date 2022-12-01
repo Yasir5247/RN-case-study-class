@@ -37,7 +37,6 @@ const themes: Record<Appearance, ThemeColors> = {
   },
 };
 
-// for more information - https://wix.github.io/react-native-ui-lib/foundation/style
 export const configureDesignSystem = async (): PVoid => {
   const {ui} = stores;
 
@@ -89,7 +88,6 @@ export const getStatusBarBGColor = (): string => {
 export const getNavigationTheme = (): Theme => {
   const {ui} = stores;
 
-  // for more information - https://reactnavigation.org/docs/themes
   const MyDefaultTheme: Theme = {
     dark: false,
     colors: {
@@ -141,11 +139,9 @@ export const screenDefaultOptions = (): NativeStackNavigationOptions => ({
   // this setup makes large title work on iOS
   ...Platform.select({
     ios: {
-      headerLargeTitle: true,
+      headerLargeTitle: false,
       headerTransparent: true,
-      headerBlurEffect: getHeaderBlurEffect(), // this sets up blurred nav bar
-      // if you'd like to have a solid color for a nav bar, then you should
-      // set up `headerStyle: {backgroundColor: Colors.bg2Color}`
+      headerBlurEffect: getHeaderBlurEffect(),
     },
   }),
 });
